@@ -19,9 +19,9 @@ def count_lines_in_file():
             mode = input("Do you want to open the file in text (t) or binary (b) mode? ").strip().lower()
 
             if mode == 't':
-                mode = 'r'  
+                mode = 'r'  # text read mode
             elif mode == 'b':
-                mode = 'rb'  
+                mode = 'rb'  # binary read mode
             else:
                 print("Invalid mode selected. Please enter 't' for text or 'b' for binary.")
                 continue
@@ -31,10 +31,10 @@ def count_lines_in_file():
                 # Check if file is in binary mode
                 if 'b' in mode:
                     content = file.read()
-                    line_count = content.count(b'\n')  
+                    line_count = content.count(b'\n')  # count newlines in binary
                 else:
                     lines = file.readlines()
-                    line_count = len(lines)  
+                    line_count = len(lines)  # count lines in text mode
 
                 print(f"The file contains {line_count} lines.")
                 break
