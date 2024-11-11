@@ -15,33 +15,34 @@ def count_lines_in_file():
             else:
                 print("Chosen file:", file_name)
 
-            # Ask for mode: text or binary
+            
             mode = input("Do you want to open the file in text (t) or binary (b) mode? ").strip().lower()
 
             if mode == 't':
-                mode = 'r'  # text read mode
+                mode = 'r'  
             elif mode == 'b':
-                mode = 'rb'  # binary read mode
+                mode = 'rb'  
             else:
                 print("Invalid mode selected. Please enter 't' for text or 'b' for binary.")
                 continue
 
-            # Try to open the file
+           
             with open(file_name, mode) as file:
-                # Check if file is in binary mode
                 if 'b' in mode:
                     content = file.read()
-                    line_count = content.count(b'\n')  # count newlines in binary
+                    line_count = content.count(b'\n')  
                 else:
                     lines = file.readlines()
-                    line_count = len(lines)  # count lines in text mode
+                    line_count = len(lines) 
 
                 print(f"The file contains {line_count} lines.")
                 break
         except UnicodeDecodeError:
             print("The file contains invalid characters.")
+            break
         except FileNotFoundError:
             print("Error: The file does not exist. Please try again.")
+            break
         except IOError:
             print("Error: The file cannot be read. Exiting the program.")
             break
